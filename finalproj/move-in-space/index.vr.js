@@ -7,6 +7,7 @@ import CylindricalPanel from 'CylindricalPanel';
 
 
 var AUTH_KEY = '8825240-c7cbb4a0c138d3f87d226a813';
+var search = 'puppy'
 
 
 
@@ -68,16 +69,18 @@ class CylindricalPanelDemo extends React.Component {
   componentDidMount() {
     let imgs = this.fetchImage()
     this.setState({ imgs })
+    console.log(this.state.imgs)
   }
 
   fetchImage = () => {
-    fetch(`https://pixabay.com/api/?key=${AUTH_KEY}&q=yellow+flowers&image_type=photo`)
+    fetch(`https://pixabay.com/api/?key=${AUTH_KEY}&q=${search}&image_type=photo`)
       .then((res) => {
         let imgs = res.json()
-        return imgs
+        return data
       })
-      .then((imgs) => {
-        console.log(imgs)
+      .then((data) => {
+        let imgs = data.hits
+        return imgs
       })
   }
 
